@@ -1,0 +1,38 @@
+﻿<Window x:Class="lr3_data.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="СУБД на B-дереві" Height="500" Width="700">
+    <Grid Margin="10">
+        <TextBlock Text="СУБД з використанням B-дерева, t=25" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" />
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,40,0,0">
+            <TextBlock Text="Ключ:" VerticalAlignment="Center" Margin="5" />
+            <TextBox x:Name="KeyTextBox" Width="100" Margin="5" ToolTip="Унікальний цілочисельний ключ" />
+            <TextBlock Text="Дані:" VerticalAlignment="Center" Margin="5" />
+            <TextBox x:Name="ValueTextBox" Width="200" Margin="5" ToolTip="Рядок даних" MaxLength="50" />
+            <Button x:Name="AddButton" Content="Додати запис" Width="100" Margin="5" Click="AddRecordButton_Click" />
+            <Button x:Name="DeleteButton" Content="Видалити запис" Width="120" Margin="5" Click="DeleteRecordButton_Click" />
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,80,0,0">
+            <Button x:Name="EditButton" Content="Редагувати запис:" Width="120" Margin="5" Click="EditRecordButton_Click" />
+            <TextBox x:Name="EditValue" Width="100" Margin="5" ToolTip="Нові дані" MaxLength="50" />
+            <Button x:Name="GenerateButton" Content="Згенерувати n записів:" Width="140" Margin="5" Click="GenerateButton_Click" />
+            <TextBox x:Name="GenerateAmount" Width="100" Margin="5" ToolTip="Кількість генерованих записів" MaxLength="50" />
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,120,0,0">
+            <TextBlock Text="Пошук за ключем:" VerticalAlignment="Center" Margin="5" />
+            <TextBox x:Name="SearchKeyTextBox" Width="100" Margin="5" ToolTip="Введіть ключ для пошуку" />
+            <Button x:Name="SearchButton" Content="Пошук" Width="80" Margin="5" Click="SearchRecordButton_Click" />
+            <TextBlock Name="RecordsNum" Text="Кількість записів: 0" VerticalAlignment="Center" Margin="5" />
+        </StackPanel>
+        
+        <DataGrid x:Name="RecordsDataGrid" VerticalAlignment="Top" Margin="0,160,0,0" AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True" SelectionMode="Single" MaxHeight="750">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ключ" Binding="{Binding Key}" Width="*"/>
+                <DataGridTextColumn Header="Дані" Binding="{Binding Value}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
